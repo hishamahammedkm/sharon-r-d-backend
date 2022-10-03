@@ -24,15 +24,16 @@ export class AppController {
   ) {}
 
   @Get()
-  gi(){
-    return "hi"
-  }
+  gi()
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   async login(@Request() req) {
     return this.authService.login(req.user);
   }
- 
+  @Get('/')
+  get() {
+    return 'ok';
+  }
   @Post('upload')
 
   @UseInterceptors(

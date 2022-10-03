@@ -32,7 +32,10 @@ export class AppController {
   async login(@Request() req) {
     return this.authService.login(req.user);
   }
- 
+  @Get('/')
+  get() {
+    return 'ok';
+  }
   @Post('upload')
 
   @UseInterceptors(
