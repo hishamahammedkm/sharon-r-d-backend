@@ -43,8 +43,8 @@ export class AppService {
       // @ts-ignore
       totoalPurchaseAmount = this.sharonTotalPurchaseAmount(data.sharonProducts).toFixed(2);
     }
-    console.log("totoalPurchaseAmount---",totoalPurchaseAmount);
-    // console.log('data---', data);
+"    console.log(totoalPurchaseAmount);
+"    // console.log('data---', data);
     // @ts-expect-error
     if (data.length == 0) {
       return {

@@ -28,7 +28,7 @@ export class AppService {
     }
   }
 
-  sharonTotalPurchaseAmount = (data) => {
+  total = (data) => {
     return data.reduce((prv, cur) => {
       return prv + cur.price * cur.quantity;
     }, 0);
@@ -41,9 +41,9 @@ export class AppService {
     // @ts-ignore
     if (data.sharonProducts) {
       // @ts-ignore
-      totoalPurchaseAmount = this.sharonTotalPurchaseAmount(data.sharonProducts).toFixed(2);
+      totoalPurchaseAmount = this.total(data.sharonProducts).toFixed(2);
     }
-    console.log("totoalPurchaseAmount---",totoalPurchaseAmount);
+    console.log(totoalPurchaseAmount);
     // console.log('data---', data);
     // @ts-expect-error
     if (data.length == 0) {

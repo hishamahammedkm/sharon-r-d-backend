@@ -11,24 +11,30 @@ export class AppService {
   getHello(): string {
     return 'Hello World!';
   }
-  async getData(file) {
-    let sharonProducts = [];
-    const { products, ...data } = await this.aws.analyzeInvoice(file.filename);
+  getData = async (file) => {
+   let sharonProducts = []
+   const {products,...} =  await this.aws.analyzeInvoice(file.filename);
+   console.log("invoiceData-----",invoiceData);
+  
+
 
     try {
-      products.forEach((product) => {
+  
+
+
+      invoiceData.products.forEach((product) => {
         let position = product.name.search(/SHARON/i);
         if (position >= 0) {
           sharonProducts.push(product);
         }
       });
-      return { sharonProducts, data };
+      return { sharonProducts, };
     } catch (error) {
       return [];
     }
-  }
+  };
 
-  sharonTotalPurchaseAmount = (data) => {
+  processData = (data) => {
     return data.reduce((prv, cur) => {
       return prv + cur.price * cur.quantity;
     }, 0);
@@ -41,9 +47,9 @@ export class AppService {
     // @ts-ignore
     if (data.sharonProducts) {
       // @ts-ignore
-      totoalPurchaseAmount = this.sharonTotalPurchaseAmount(data.sharonProducts).toFixed(2);
+      totoalPurchaseAmount = this.processData(data.sharonProducts).toFixed(2);
     }
-    console.log("totoalPurchaseAmount---",totoalPurchaseAmount);
+    console.log(totoalPurchaseAmount);
     // console.log('data---', data);
     // @ts-expect-error
     if (data.length == 0) {

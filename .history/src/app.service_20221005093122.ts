@@ -28,31 +28,31 @@ export class AppService {
     }
   }
 
-  sharonTotalPurchaseAmount = (data) => {
+  processData = (data) => {
     return data.reduce((prv, cur) => {
       return prv + cur.price * cur.quantity;
     }, 0);
   };
 
-  async processFile(file: Express.Multer.File) {
-    const data = await this.getData(file);
+  // async processFile(file: Express.Multer.File) {
+  //   const data = await this.getData(file);
 
-    let totoalPurchaseAmount = 0;
-    // @ts-ignore
-    if (data.sharonProducts) {
-      // @ts-ignore
-      totoalPurchaseAmount = this.sharonTotalPurchaseAmount(data.sharonProducts).toFixed(2);
-    }
-    console.log("totoalPurchaseAmount---",totoalPurchaseAmount);
-    // console.log('data---', data);
-    // @ts-expect-error
-    if (data.length == 0) {
-      return {
-        statusCode: 404,
-        message: 'some this went wrong',
-      };
-    }
+  //   let totoalPurchaseAmount = 0;
+  //   // @ts-ignore
+  //   if (data.sharonProducts) {
+  //     // @ts-ignore
+  //     totoalPurchaseAmount = this.processData(data.sharonProducts).toFixed(2);
+  //   }
+  //   console.log(totoalPurchaseAmount);
+  //   // console.log('data---', data);
+  //   // @ts-expect-error
+  //   if (data.length == 0) {
+  //     return {
+  //       statusCode: 404,
+  //       message: 'some this went wrong',
+  //     };
+  //   }
 
-    return { totoalPurchaseAmount, ...data };
-  }
+  //   return { totoalPurchaseAmount, ...data };
+  // }
 }

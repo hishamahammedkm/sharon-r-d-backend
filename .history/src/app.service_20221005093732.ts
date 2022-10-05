@@ -43,14 +43,9 @@ export class AppService {
       // @ts-ignore
       totoalPurchaseAmount = this.sharonTotalPurchaseAmount(data.sharonProducts).toFixed(2);
     }
-    console.log("totoalPurchaseAmount---",totoalPurchaseAmount);
-    // console.log('data---', data);
-    // @ts-expect-error
-    if (data.length == 0) {
-      return {
-        statusCode: 404,
-        message: 'some this went wrong',
-      };
+    console.log(totoalPurchaseAmount);
+    
+
     }
 
     return { totoalPurchaseAmount, ...data };
