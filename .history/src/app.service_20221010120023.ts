@@ -14,9 +14,7 @@ export class AppService {
   async getData(file) {
     let sharonProducts = [];
     const { products, ...data } = await this.aws.analyzeInvoice(file.filename);
-    products.forEach((p=>{
-      p['unitPrice'] = p.price / p.quantity
-    }))
+    products.forEach
 
     try {
       products.forEach((product) => {

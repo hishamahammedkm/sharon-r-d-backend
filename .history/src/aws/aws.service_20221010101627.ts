@@ -201,14 +201,11 @@ export class AwsService {
                     break;
 
                   case 'PRICE':
-                    // 18 % tax
-                    let tax = parseFloat(col.ValueDetection.Text) * 18/118;
-                    let unitPrice = parseFloat(col.ValueDetection.Text) - tax;
-                    product['price'] = unitPrice;
+                    product['price'] = col.ValueDetection.Text;
                     break;
 
                   case 'QUANTITY':
-                    product['quantity'] = parseInt(col.ValueDetection.Text);
+                    product['quantity'] = parseInt  col.ValueDetection.Text;
                     break;
 
                   default:

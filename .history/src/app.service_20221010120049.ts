@@ -15,7 +15,7 @@ export class AppService {
     let sharonProducts = [];
     const { products, ...data } = await this.aws.analyzeInvoice(file.filename);
     products.forEach((p=>{
-      p['unitPrice'] = p.price / p.quantity
+      p[n]
     }))
 
     try {
